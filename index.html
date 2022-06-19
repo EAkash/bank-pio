@@ -50,7 +50,7 @@
                     <br>
                     <input id="depositeAmount" type="number" name="" class="form-control" id="" placeholder="deposite amount">
                     <br>
-                    <button id = "adddeposite" class="btn btn-success">Submit</button>
+                    <button id = "addDeposite" class="btn btn-success">Submit</button>
                 </div>
                 
             </div>
@@ -75,38 +75,36 @@
             const trarea = document.getElementById("tr-area");
             trarea.style.display="block";
              })
-        
-        // deposite 
+        //Depoite Button     
+        const depositeBtn = document.getElementById("addDeposite");
+        depositeBtn.addEventListener("click",function(){
+            //   const depositeAmount = document.getElementById("depositeAmount").value;
+              const depositeNumber = getInput("depositeAmount");
+              
 
-        const deposite = document.getElementById('adddeposite');
-        deposite.addEventListener("click",function()
-        {
-          const depositeAmount = getinputNumber("depositeAmount");
+              addMoney("currentDeposite",depositeNumber);
+              addMoney("currentBalance",depositeNumber);
 
-          updateSpanText('currentBalance',depositeNumber);
-          updateSpanText('currentDeposite',depositeNumber);
-
-          document.getElementById("depositeAmount").value = 0;
+              document.getElementById("depositeAmount").value=0;
         })
-
-        //withdraw 
-        const Withdraw = document.getElementById("withdraw");
-        withdraw.addEventListener("click",function(){
-
-            const withdrawAmount = getinputNumber("withdrawAmount");
+        //withdrawButton
+        const withdrawbtn = document.getElementById("withdraw");
+        withdrawbtn.addEventListener("click",function(){
+            const withdrawAmountNo =getInput("withdrawAmount");
         })
-        // Deposite & withdraw Func
-        function getinputNumber(id){
+        function getInput(id){
             const amount = document.getElementById(id).value;
-            const number = parseFloat(id);
-            return number;
+            const amountNo = parseFloat(amount);
+            return amountNo;
         }
-        function updateSpanText(id,depositeNumber){
-            const currentBalance = document.getElementById(id).innerText;
-            const balanceNo = parseFloat(currentBalance);
-            const totalBalance = depositeNumber + balanceNo ;
-            document.getElementById(id).innerText = totalBalance;
+        function addMoney(id,depositeNumber) {
+            const currentMoney = document.getElementById(id).innerText;
+            const currentMoneyNo = parseFloat(currentMoney);
+            const totalMoney = currentMoneyNo + depositeNumber;
+            document.getElementById(id).innerText = totalMoney;
+
         }
+
         
     </script>
 
